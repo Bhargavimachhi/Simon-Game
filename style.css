@@ -8,6 +8,26 @@ body {
   justify-content: center;
 }
 
+#btn-1{
+  background-color: magenta;
+}
+
+#btn-2{
+  background-color: blue;
+}
+
+#btn-3{
+  background-color: green;
+}
+
+#btn-0{
+  background-color: yellow;
+}
+
+.flash{
+  background-color: white;
+}
+
 .btn {
   border: 7px solid black;
   border-radius: 20%;

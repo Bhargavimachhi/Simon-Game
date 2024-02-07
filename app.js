@@ -2,6 +2,7 @@ let start = false;
 let point = 0;
 let idx = 0;
 let seq = [];
+let btns=document.querySelectorAll('.btn');
 
 document.querySelector("body").addEventListener("click", function () {
   if (!start) {
@@ -9,33 +10,19 @@ document.querySelector("body").addEventListener("click", function () {
   }
 });
 
-let temp = function (btn) {
-  if (start) {
-    checkAnswer(btn);
-  } else {
-    gameStart();
-  }
-};
-
-document.querySelector("#btn-0").addEventListener("click", function (event) {
-  event.stopPropagation();
-  temp(this);
-});
-
-document.querySelector("#btn-1").addEventListener("click", function (event) {
-  event.stopPropagation();
-  temp(this);
-});
-
-document.querySelector("#btn-2").addEventListener("click", function (event) {
-  event.stopPropagation();
-  temp(this);
-});
-
-document.querySelector("#btn-3").addEventListener("click", function (event) {
-  event.stopPropagation();
-  temp(this);
-});
+for(let btn of btns){
+  btn.addEventListener("click", function (event) {
+    event.stopPropagation();
+    blink(btn,"lime",150);
+    setTimeout(function(){
+      if (start) {
+        checkAnswer(btn);
+      } else {
+        gameStart();
+      }
+    },500);
+  });
+}
 
 let checkAnswer = function (btn) {
   console.log(seq);
@@ -54,35 +41,35 @@ let checkAnswer = function (btn) {
     idx = 0;
     start = false;
     let h2 = document.querySelector("h2");
+    document.querySelector('body').style.backgroundColor='red';
     h2.innerText = `Game Over !!! Your Score is ${point}\nClick Anywhere to Continue`;
     point = 0;
-    while (seq.length > 0) {
-      seq.pop();
-    }
+    seq=[];
   }
 };
 
 let gameStart = function () {
+  document.querySelector('body').style.backgroundColor='white';
   start = true;
   let h2 = document.querySelector("h2");
   h2.innerText = `Level ${point + 1}`;
   randomBlink();
 };
 
-let blink = function (btn) {
+let blink = function (btn,color,time) {
   let ini = btn.style.backgroundColor;
   const blinkInterval = setInterval(() => {
-    btn.style.backgroundColor = "white";
-  }, 400);
+    btn.style.backgroundColor = color;
+  }, time);
 
   setTimeout(() => {
     clearInterval(blinkInterval);
     btn.style.backgroundColor = ini;
-  }, 800);
+  }, 2*time);
 };
 
 let randomBlink = function () {
   let x = Math.floor(Math.random() * 4);
   seq.push(x);
-  blink(btns[x]);
+  blink(btns[x],"white",300);
 };
