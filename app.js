@@ -1,7 +1,6 @@
 let start = false;
 let point = 0;
 let idx = 0;
-let btns = document.querySelectorAll(".btn");
 let seq = [];
 
 document.querySelector("body").addEventListener("click", function () {
