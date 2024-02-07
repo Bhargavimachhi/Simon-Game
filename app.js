@@ -4,6 +4,11 @@ let idx = 0;
 let seq = [];
 let btns=document.querySelectorAll('.btn');
 
+
+document.querySelector("h1").addEventListener("click",function(event){
+  event.stopPropagation();
+});
+
 document.querySelector("body").addEventListener("click", function () {
   if (!start) {
     gameStart();
