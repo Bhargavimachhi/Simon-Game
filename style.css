@@ -1,44 +1,72 @@
-body {
-  text-align: center;
-  margin: 0 0 0 0;
-}
+/* style.css */
 
-#game {
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f093fb, #f5576c);
+  color: #fff;
+  text-align: center;
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
-#btn-1{
-  background-color: magenta;
+h1 a {
+  color: #ffcc00;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-#btn-2{
-  background-color: blue;
+h1 a:hover {
+  color: #ffd633;
+  text-shadow: 0 0 10px #ffcc00;
 }
 
-#btn-3{
-  background-color: green;
+h2 {
+  margin-top: 10px;
+  color: #e0e0e0;
 }
 
-#btn-0{
-  background-color: yellow;
-}
-
-.flash{
-  background-color: white;
+#game {
+  display: inline-block;
+  margin-top: 30px;
 }
 
 .btn {
-  border: 7px solid black;
+  height: 120px;
+  width: 120px;
+  margin: 10px;
   border-radius: 20%;
-  height: 200px;
-  width: 200px;
-  margin: 50px 25px 50px 25px;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-@media screen and (max-width: 500px) {
-  .btn {
-    width: 150px;
-    margin: 30px 15px 30px 15px;
-  }
+/* Button Colors */
+#btn-0 {
+  background-color: #ff4b5c;
+}
+#btn-1 {
+  background-color: #56cfe1;
+}
+#btn-2 {
+  background-color: #28df99;
+}
+#btn-3 {
+  background-color: #fddb3a;
+}
+
+/* Glow on hover */
+.btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 30px #ffffff80;
+}
+
+/* Active state (for JS to toggle) */
+.active {
+  filter: brightness(150%);
+  box-shadow: 0 0 40px #ffffffcc;
 }
